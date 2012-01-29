@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Glabels-templates xmlns="http://snaught.com/glabels/2.2/">
+  <Template brand="PaperCoins" part="2" size="US-Letter" description="Bitcoins on US-Letter paper">
+    <Label-rectangle id="0" width="100mm" height="50mm" round="0mm" x_waste="0mm" y_waste="0mm">
+      <Markup-margin size="3mm"/>
+      <Layout nx="2" ny="5" x0="8mm" y0="14.5mm" dx="100mm" dy="50mm"/>
+    </Label-rectangle>
+  </Template>
+</Glabels-templates>
