@@ -28,3 +28,7 @@ done < $FIN
 glabels-batch -C -l -i $TMPCSV -o $PDF $TEMPLATE
 
 rm -rf $TMPDIR
+
+echo ""
+echo "Created: $PDF"
+echo ""
