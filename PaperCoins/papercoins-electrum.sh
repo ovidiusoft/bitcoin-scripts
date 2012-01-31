@@ -93,5 +93,6 @@ glabels-batch -C -l -i $TMPCSV -o $PDF $TEMPLATE
 rm -rf $TMPDIR
 
 echo ""
+echo "Created: $NEWWALLET"
 echo "Created: $PDF"
 echo ""
