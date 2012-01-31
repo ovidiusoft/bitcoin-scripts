@@ -7,20 +7,18 @@
 TEMPLATE="designs/papercoins-ovidiusoft.glabels"
 
 # full path to a patched Electrum client, electrum-nic (non-interactive create); copy the patched electrum-nic to your standard Electrum folder
-#ELECTRUM="/home/user/programs/electrum/electrum-nic"
-ELECTRUM="/data/work/ME/electrum-ovidiusoft/client/electrum-nic"
+ELECTRUM="/home/user/programs/electrum/electrum-nic"
 
 # wallet to send BTC from
-# MYWALLET="/home/user/.electrum/electrum.dat"
-MYWALLET="/home/ovidiu/.electrum/electrum.dat"
+MYWALLET="/home/user/.electrum/electrum.dat"
 
 # THIS IS IMPORTANT! 'mktx' will only create the tx and print it on the screen. 'payto' will broadcast the tx to the network!
 OP="mktx"
 # OP="payto"
 
-# comment the next two lines after you edit the settings above
-# echo "PLEASE EDIT YOUR SETTINGS BEFORE RUNNING ME!"
-# exit 1
+comment the next two lines after you edit the settings above
+echo "PLEASE EDIT YOUR SETTINGS BEFORE RUNNING ME!"
+exit 1
 
 ###############################
 
