@@ -1,0 +1,41 @@
+papercoins.sh
+=============
+
+This script takes as argument a filename. The file is a simple CSV in the format (check out the pepercoins.csv sample):
+
+amount,private-key
+
+It will create a PDF file with the PaperCoins corresponding to those private keys. It's your responsability to fund the addresses with the correct amounts.
+
+Running the script requires glabels and qrencode.
+
+
+papercoins-electrum.sh
+======================
+
+This script makes use of Electrum client (http://ecdsa.org/electrum/) to:
+
+* create a new wallet with the PaperCoins addresses.
+* use your current Electrum wallet to fund these addresses (just create the tx or create tx and "real" broadcast)
+* create a PDF with the PaperCoins fully funded!
+
+The script takes multiple argumets - the amounts for each PaperCoin:
+
+./papercoins-electrum.sh 1 1 1.5 3 5 5.25 10 10
+
+This will create 8 PaperCoins with those amounts. Two files will be saved in the current directory:
+
+* PaperCoins-TIMESTAMP.pdf - this is ready to print, cut and use in stores.
+* PaperCoins-TIMESTAMP.wallet - this is a Electrum wallet with those PaperCoins. You can use it later if you want to transfer out unused funds (use Electrum's -w option to specify a custom wallet file to use).
+
+Before first run, you need to edit the script and set a few options, like Electrum path, default wallet and whether to just create the tx'es, or also to broadcast to the network.
+
+The script uses a patched version of Electrum (electrum-nic, "non-interactive create"), which does exactly that - it creates a new wallet without asking anything, using program defaults. You should copy this file to your Electrum install location. Note that the main Electrum git tree might not be compatible with this script, so I suggest you download and use a certain tested version from my own tree:
+
+$ git clone git://gitorious.org/~ovidiusoft/electrum/electrum-ovidiusoft.git
+$ cd electrum-ovidiusoft
+$ git checkout c26158ed319cf60d8fc3c5689b39c8828bb970e8
+$ cp /path/to/electrum-nic client/
+
+-- 
+Ovidiu Constantin aka ovidiusoft <ovidiu@mybox.ro>
