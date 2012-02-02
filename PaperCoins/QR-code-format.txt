@@ -1,0 +1,47 @@
+Format 1:
+
+This is the default way to export private keys, already implemented in various Bitcoin clients and services. The content of the QR code is just a single private key, no formatting.
+
+======================================================================
+
+Format 2:
+
+This format was created to allow the transfer of more information on the PaperCoin, for example a change address and multiple private keys. The data encoded in the QR code is made up of a list of comma-separated list of KEY=VALUE tokens. The following keys are defined:
+
+* PAPERCOIN=<version>
+
+Identifies the PaperCoin version. Valid value: 1. This key *must* be the first in the string, as it will be used by the scanning app to identify a PaperCoin. The key should appear only once, any further occurances should be ignored by the scanning app. If the key is not present, the scanning app should fall back to Format 1 above (private key).
+
+* PRIVKEY=<private-key>
+
+Private key to sweep funds from. Multiple keys are allowed, at least one occurence is required.
+
+* AMOUNT=<number>
+
+Amount that is expected to be available. If there are multiple private keys, this is the total available. This key is optional.
+
+
+* CHNGADDR=<change-address>
+
+Bitcoin address to send change to. This key is optional. If used, it should appear only once, any further occurances should be ignored by the scanning app.
+
+* URL=<url>
+
+Suggested URL to redeem private key. This key is optiona and multiple occurences are allowed. Its purpose is to be used by "dumb" QR code readers withouth Bitcoin software. A seller will scan the QR code, visit the URL and follow website instructions to redeem the funds. Note that if the URL includes a comma, it should be properly encoded as to not be taken as token separator by the scanning app!
+
+***
+
+Minimal functional QR code data:
+
+PAPERCOIN=1,PRIVKEY=<key>
+
+A more complex example:
+
+PAPERCOIN=1,AMOUNT=5.25,PRIVKEY=<key1>,PRIVKEY=<key2>,CHNGADDR=<address>,URL=http://example.com/pc-94395748/
+
+***
+
+TBD: discuss - what to do with unknown keys? Silently ignore/reject PaperCoin?
+TBD: discuss - do we really need the AMOUNT key?
+TBD: test different QR scanning apps with the URL token - make sure the URL is easy to extract/copy-paste/click. If it is not, a different format might be needed (multi-line content?)
+
